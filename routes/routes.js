@@ -6,10 +6,13 @@ app.get('/health', (req, res)=>{
 
 const {showPage, handleShortenRequest, handleRedirect} = require('../controllers/shotner.controller');
 
+// middlewre
+const { checkCache } = require('../middleware/cache');
+
 app
 .get('/', showPage)
 .post('/', handleShortenRequest)
-.get('/:id', handleRedirect);
+.get('/:id', checkCache, handleRedirect);
 
 
 module.exports = app;
