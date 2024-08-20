@@ -4,7 +4,7 @@ exports.shortenUrl = (url) => {
     // convert the url to md5 hash
     const hashedUrl = crypto.createHash('md5').update(url).digest('hex');
     // now convert it to base62
-    const shortnedUrl = base62x.encode(hashedUrl);
+    const shortnedUrl = base62x.encode(hashedUrl).slice(0, 8);
 
     return { hashedUrl, shortnedUrl };
 }

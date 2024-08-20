@@ -4,11 +4,12 @@ app.get('/health', (req, res)=>{
     return res.send(`App is healthy`);
 });
 
-const {showPage, handleShortenRequest} = require('../controllers/shotner.controller');
+const {showPage, handleShortenRequest, handleRedirect} = require('../controllers/shotner.controller');
 
 app
 .get('/', showPage)
-.post('/', handleShortenRequest);
+.post('/', handleShortenRequest)
+.get('/:id', handleRedirect);
 
 
 module.exports = app;
