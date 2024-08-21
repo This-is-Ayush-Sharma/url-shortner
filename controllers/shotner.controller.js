@@ -48,7 +48,13 @@ exports.handleRedirect = (req, res) => {
     const { id } = req.params;
 
     urls.findOne({shortnedUrl: id}).then(data => {
-        res.redirect(data.url);
+        // after long time we need to set it as cache 
+        setCache(data.shortnedUrl, JSON.stringify(data)).then(() => { 
+            console.log("Cached The Data");
+        }).catch(error => {
+            console.log(error);
+        });
+        return res.redirect(data.url);
     })
     .catch(error => {
         return res.send("Some error has occured " + error);
