@@ -21,8 +21,15 @@
             </div>
         </form>
     </div>
-
+    <div class="container">
+        <% if(data2?.shortnedUrl) {%>
+            <div class="alert alert-primary mb-2" role="alert">
+                <center><a href="/<%= data2?.shortnedUrl %>" class="href">Shortned url</a> </center>
+            </div>
+        <% } %>
+    </div>
     <div class="container mt-2">
+        
         <!-- left and right json beautify -->
         <div class="row">
             <!-- First Column -->
@@ -68,11 +75,7 @@
         });
     </script>
 
-    <% if(data2?.shortnedUrl) {%>
-        <div>
-            <a href="/<%= data2?.shortnedUrl %>" class="href">Shortned url</a> 
-        </div>
-    <% } %>
+    
     <!-- Bootstrap JS Bundle (with Popper) -->
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
