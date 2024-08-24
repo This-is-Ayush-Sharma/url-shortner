@@ -3,7 +3,7 @@ exports.checkCache = (req, res, next) => {
     fetchUrl(req.params.id).then((data) => {
         console.log(data, typeof(data));
         
-        if (data == null) {
+        if (data === null) {
             next();
         }
         else {

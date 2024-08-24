@@ -14,7 +14,7 @@ exports.handleShortenRequest = (req, res) => {
     const shortenedUrl = shortenUrl(url);
 
     urls.findOne({url}).then(data => {
-        if(data == null){
+        if(data === null){
             urls.create({ ...shortenedUrl, ...req.body }).then((details) => {
                 // return res.json(details);
                 setCache(details.shortnedUrl, JSON.stringify(details)).then(() => { 
