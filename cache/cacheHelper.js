@@ -18,7 +18,7 @@ redisClient.on("error", (err) => {
 
 
 exports.setCache = (key, value) => {
-    return redisClient.set(key, value, 'EX', 86400, function (err, reply) {
+    return redisClient.set(key, value, {EX:86400}, function (err, reply) {
         if (err) {
             console.error('Error setting key:', err);
         } else {
